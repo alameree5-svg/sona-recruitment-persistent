@@ -1,0 +1,19 @@
+
+services:
+  - type: web
+    name: sona-recruitment-office
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm run init-db && npm start"
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATA_DIR
+        value: /data
+    disk:
+      name: storage
+      mountPath: /data
+      sizeGB: 1
